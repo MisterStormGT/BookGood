@@ -1,19 +1,69 @@
 ﻿@model PaginatedList<ContosoUniversity.Models.Section>
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Section";
 }
 
-<h2>Разделы</h2>
+<style>
+    p.buttonBlock a {
+        color:white;
+    }
+        p.buttonBlock a:hover {
+            color: aliceblue;
+            transition: 0.2s all linear;
+            background: rgb(54 174 119);
+            color: white;
+        }
 
-<p>
-    <a asp-action="Create">Создать новый раздел</a>
+    .color p {
+        font-size: 17px;
+    }
+
+    .color a:hover {
+        transition: 0.2s all linear;
+        border-bottom: 3px solid black;
+        padding: 10px;
+        color: black;
+    }
+
+    .color a {
+        transition: 0.2s all linear;
+        border-bottom: 3px solid rgb(54 174 119);
+        text-decoration: none;
+        color: rgb(54 174 119);
+        border-radius: 30px;
+        padding:5px;
+    }
+</style>
+
+<h2 style="        
+        text-align: center;
+        border: 3px solid rgb(54 174 119);
+        border-radius: 30px;
+        padding:10px;
+        background:rgb(209 196 196);
+        font-size:30px;">Разделы
+    </h2>
+
+<p class="buttonBlock" style="        background: black;
+        transition: 0.4s all linear;
+        width: 20%;
+        border-radius: 30px;
+        cursor: pointer;">
+    <a style="        transition: 0.2s all linear;
+        border-radius: 30px;
+        padding: 10px;
+        font-size: 18px;
+        display: flex;
+        justify-content: center;
+        text-align: center;
+        text-decoration: none;" asp-action="Create" class="activation">Создать новый раздел</a>
 </p>
 <form asp-action="Index" method="get">
-    <div class="form-action no-color">
+    <div class="form-action no-color color">
         <p>
-            Найти по названию раздела:<input type="text" name="searchString" value="@ViewData["CurrentFilter"]" />
-            <input type="submit" value="Search" class="btn btn-success" />
+            Найти по названию раздела:<input type="text" style="border-radius:10px; outline:none; align-items:center;" name="searchString" value="@ViewData["CurrentFilter"]" />
+            <input type="submit" value="Найти" style="border-radius:10px; font-size:16px;" class="btn btn-success" />
             <a asp-action="Index">Вернуться обратно к полному списку</a>
         </p>
     </div>
