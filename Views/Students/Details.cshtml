@@ -1,0 +1,87 @@
+﻿@model ContosoUniversity.Models.Student
+
+@{ ViewData["Title"] = "Details"; }
+
+<h2>Информация о студенте</h2>
+
+<div>
+    <h4>Студент</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.LastName)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.LastName)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.FirstMidName)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.FirstMidName)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.EnrollmentDate)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.EnrollmentDate)
+        </dd>
+        @*we write courses here!*@
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Enrollments)
+        </dt>
+        <dd class="col-sm-10">
+            <form asp-action="Index" method="get">
+                <div class="form-action no-color">
+                    <p>
+                        Найти по названию курса:<input type="text" name="searchString" value="@ViewData["CurrentFilter"]" />
+                        <input type="submit" value="Search" class="btn btn-success" />
+                        <a asp-action="Index">Вернуться обратно к списку</a>
+                    </p>
+                </div>
+            </form>
+            <table class="table">
+                <tr>
+                    <th>
+                        <a asp-action="Index" asp-route-sortOrder="@ViewData["TitleGradeSortParam"]" asp-route-currentFilter="@ViewData["CurrentFilter"]">Название курса</a>
+                    </th>
+                    <th>
+                        <a asp-action="Index" asp-route-sortOrder="@ViewData["GradeSortParam"]" asp-route-currentFilter="@ViewData["CurrentFilter"]">Оценка</a>
+                    </th>
+                </tr>
+                @foreach (var item in Model.Enrollments)
+                {
+    <tr>
+        <td>
+            @Html.DisplayFor(modeltem => item.Course.Title)
+        </td>
+        <td>
+            @Html.DisplayFor(modelitem => item.Grade)
+        </td>
+    </tr>}
+            </table>
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.Id">Изменить</a> |
+    <a asp-action="Index">Вернуться к списку</a>
+</div>
+@*@{ var prevDisabled = !Model.HasPreviousPage ? "disabled" : "";
+    var nextDisabled = !Model.HasNextPage ? "disabled" : ""; }
+
+<a asp-action="Index"
+   asp-route-sortOrder="@ViewData["CurrentSort"]"
+   asp-route-pageNumber="@(Model.PageIndex-1)"
+   asp-route-currentFilter="@ViewData["CurrentFilter"]"
+   class="btn btn-default @prevDisabled">
+    Предыдущая страница
+</a>
+
+<a asp-action="Index"
+   asp-route-sortOrder="@ViewData["CurrentSort"]"
+   asp-route-pageNumber="@(Model.PageIndex+1)"
+   asp-route-currentFilter="@ViewData["CurrentFilter"]"
+   class="btn btn-default @nextDisabled">
+    Следующая страница
+</a>*@

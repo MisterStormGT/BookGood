@@ -1,0 +1,29 @@
+﻿@{
+    ViewBag.Title = "UpdateCourseCredits";
+}
+
+<h2>Курсы</h2>
+
+@if (ViewData["RowsAffected"] == null)
+{
+    <form asp-action="UpdateCourseCredits">
+        <div class="form-actions no-color">
+            <p>
+                Введите число, чтобы умножить кредиты на: @Html.TextBox("multiplier")
+            </p>
+            <p>
+                <input type ="submit" value="Изменить" class="btn btn-default" />
+            </p>
+        </div>
+    </form>
+}
+
+@if (ViewData["RowsAffected"] != null)
+{
+<p>
+    обновленных строк: @ViewData["RowsAffected"]
+</p>
+}
+<div>
+    @Html.ActionLink("Вернуться обратно", "Index")
+</div>
