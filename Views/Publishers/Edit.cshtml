@@ -1,4 +1,4 @@
-﻿@model ContosoUniversity.Models.Section
+﻿@model ContosoUniversity.Models.Publisher
 
 @{
     ViewData["Title"] = "Edit";
@@ -34,23 +34,28 @@
         padding:10px;
         background:rgb(209 196 196);
         font-size:30px;">
-    Изменение - Разделы
+    Изменение - Издательства
 </h2>
 
-<h4>Разделы</h4>
+<h4>Издательства</h4>
 <hr />
 <div class="row">
     <div class="col-md-4">
         <form asp-action="Edit">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <input type="hidden" asp-for="SectionID" />
+            <input type="hidden" asp-for="PublisherID" />
             <div class="form-group">
-                <label asp-for="SectionName" class="control-label"></label>
-                <input asp-for="SectionName" class="form-control" />
-                <span asp-validation-for="SectionName" class="text-danger"></span>
+                <label asp-for="PublishingCity" class="control-label"></label>
+                <input asp-for="PublishingCity" class="form-control" />
+                <span asp-validation-for="PublishingCity" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <input type="submit" value="Сохранить" class="btn btn-default" />
+                <label asp-for="PublisherName" class="control-label"></label>
+                <input asp-for="PublisherName" class="form-control" />
+                <span asp-validation-for="PublisherName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Изменить" class="btn btn-default" />
             </div>
         </form>
     </div>

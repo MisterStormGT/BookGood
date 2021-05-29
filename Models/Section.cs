@@ -10,7 +10,7 @@ namespace ContosoUniversity.Models
         public int SectionID { get; set; }
 
         [Required]
-        [Display(Name = "Наименование раздела")]
+        [Display(Name = "Наименование")]
         [StringLength(100, MinimumLength = 1)]
         public string SectionName { get; set; }
 

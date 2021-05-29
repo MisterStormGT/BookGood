@@ -1,13 +1,14 @@
-﻿@model PaginatedList<ContosoUniversity.Models.Section>
+﻿@model PaginatedList<ContosoUniversity.Models.Publisher>
 
 @{
-    ViewData["Title"] = "Section";
+    ViewData["Title"] = "Publisher";
 }
 
 <style>
     p.buttonBlock a {
-        color:white;
+        color: white;
     }
+
         p.buttonBlock a:hover {
             color: aliceblue;
             transition: 0.2s all linear;
@@ -32,7 +33,7 @@
         text-decoration: none;
         color: rgb(54 174 119);
         border-radius: 30px;
-        padding:5px;
+        padding: 5px;
     }
 
     a.edit:hover {
@@ -64,6 +65,7 @@
         margin-left: 10px;
         transition: 0.2s all linear;
     }
+
     a.details {
         padding: 10px;
         text-decoration: none;
@@ -72,6 +74,7 @@
         margin-left: 10px;
         transition: 0.2s all linear;
     }
+
     a.delete {
         padding: 10px;
         text-decoration: none;
@@ -82,18 +85,19 @@
     }
 
     .td {
-        margin:20px;
+        margin: 20px;
     }
 </style>
 
-<h2 style="        
+<h2 style="
         text-align: center;
         border: 3px solid rgb(54 174 119);
         border-radius: 30px;
         padding:10px;
         background:rgb(209 196 196);
-        font-size:30px;">Разделы
-    </h2>
+        font-size:30px;">
+    Издательства
+</h2>
 
 <p class="buttonBlock" style="        background: black;
         transition: 0.4s all linear;
@@ -107,12 +111,12 @@
         display: flex;
         justify-content: center;
         text-align: center;
-        text-decoration: none;" asp-action="Create" class="activation">Создать раздел</a>
+        text-decoration: none;" asp-action="Create" class="activation">Создать издательство</a>
 </p>
 <form asp-action="Index" method="get">
     <div class="form-action no-color color">
         <p>
-            Найти по названию раздела:<input type="text" style="border-radius:10px; outline:none; align-items:center;" name="searchString" value="@ViewData["CurrentFilter"]" />
+            Найти по названию издательства:<input type="text" style="border-radius:10px; outline:none; align-items:center;" name="searchString" value="@ViewData["CurrentFilter"]" />
             <input type="submit" value="Найти" style="border-radius:10px; font-size:16px;" class="btn btn-success" />
             <a asp-action="Index">Вернуться к полному списку</a>
         </p>
@@ -122,7 +126,10 @@
     <thead>
         <tr>
             <th>
-                <a asp-action="Index" asp-route-sortOrder="@ViewData["SectionsSortParam"]" asp-route-currentFilter="@ViewData["CurrentFilter"]">Наименование раздела</a>
+                <a asp-action="Index" asp-route-sortOrder="@ViewData["CitySortParam"]" asp-route-currentFilter="@ViewData["CurrentFilter"]">Город издательства</a>
+            </th>
+            <th>
+                <a asp-action="Index" asp-route-sortOrder="@ViewData["NameSortParam"]" asp-route-currentFilter="@ViewData["CurrentFilter"]">Наименование издательства</a>
             </th>
             <th></th>
         </tr>
@@ -130,16 +137,19 @@
     <tbody>
         @foreach (var item in Model)
         {
-            <tr>
-                <td class="td">
-                    @Html.DisplayFor(modelItem => item.SectionName)
-                </td>
-                <td>
-                    <a class="edit" asp-action="Edit" asp-route-id="@item.SectionID">Изменить</a>
-                    <a class="details" asp-action="Details" asp-route-id="@item.SectionID">Детали</a>
-                    <a class="delete" asp-action="Delete" asp-route-id="@item.SectionID">Удалить</a>
-                </td>
-            </tr>
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.PublishingCity)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PublisherName)
+            </td>
+            <td>
+                <a class="edit" asp-action="Edit" asp-route-id="@item.PublisherID">Изменить</a>
+                <a class="details" asp-action="Details" asp-route-id="@item.PublisherID">Детали</a>
+                <a class="delete" asp-action="Delete" asp-route-id="@item.PublisherID">Удалить</a>
+            </td>
+        </tr>
         }
     </tbody>
 </table>

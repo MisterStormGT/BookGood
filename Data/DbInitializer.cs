@@ -55,6 +55,18 @@ namespace ContosoUniversity.Data
             }
             context.SaveChanges();
 
+            var publishersDt = new Publisher[]
+          {
+                new Publisher { PublishingCity = "Рефтинский", PublisherName = "Нью Эра"},
+                new Publisher { PublishingCity = "Асбест", PublisherName = "Регледи"}
+          };
+
+            foreach (Publisher p in publishersDt)
+            {
+                context.Publishers.Add(p);
+            }
+            context.SaveChanges();
+
 
             var instructors = new Instructor[]
             {

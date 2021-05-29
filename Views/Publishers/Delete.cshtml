@@ -1,4 +1,4 @@
-﻿@model ContosoUniversity.Models.Section
+﻿@model ContosoUniversity.Models.Publisher
 
 @{
     ViewData["Title"] = "Delete";
@@ -34,24 +34,30 @@
         padding:10px;
         background:rgb(209 196 196);
         font-size:30px;">
-    Удаление - Разделы
+    Удаление - Издательства
 </h2>
 
-<h3>Вы уверены, что хотите удалить раздел?</h3>
+<h3>Вы уверены, что хотите удалить издательство?</h3>
 <div>
-    <h4>Разделы</h4>
+    <h4>Издательства</h4>
     <hr />
     <dl class="dl-horizontal">
         <dt>
-            @Html.DisplayNameFor(model => model.SectionName)
+            @Html.DisplayNameFor(model => model.PublishingCity)
         </dt>
         <dd>
-            @Html.DisplayFor(model => model.SectionName)
+            @Html.DisplayFor(model => model.PublishingCity)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.PublisherName)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.PublisherName)
         </dd>
     </dl>
     
     <form asp-action="Delete">
-        <input type="hidden" asp-for="SectionID" />
+        <input type="hidden" asp-for="PublisherID" />
         <input type="submit" value="Удалить" class="btn btn-default" /> |
         <a class="color" asp-action="Index">Вернуться к полному списку</a>
     </form>
