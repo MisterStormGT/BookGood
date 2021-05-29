@@ -176,6 +176,22 @@ namespace ContosoUniversity.Migrations
                     table.PrimaryKey("PK_Pub", x => x.PublisherID);
                 });
 
+            migrationBuilder.CreateTable(
+           name: "Authore",
+           columns: table => new
+           {
+               AuthorID = table.Column<int>(nullable: false)
+            .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+               Surname = table.Column<string>(maxLength: 100, nullable: true),
+               Name = table.Column<string>(maxLength: 100, nullable: true),
+               MiddleName = table.Column<string>(maxLength: 100, nullable: true),
+           },
+           constraints: table =>
+           {
+               table.PrimaryKey("PK_Authore", x => x.AuthorID);
+           });
+
+
 
             migrationBuilder.CreateIndex(
                 name: "IX_AsignacionesDeCurso_InstructorId",
@@ -231,6 +247,9 @@ namespace ContosoUniversity.Migrations
 
             migrationBuilder.DropTable(
                 name: "Pub");
+
+            migrationBuilder.DropTable(
+               name: "Authore");
         }
     }
 }

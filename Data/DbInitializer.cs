@@ -43,6 +43,12 @@ namespace ContosoUniversity.Data
             context.SaveChanges();
 
 
+
+
+
+
+
+
             var sectionsing = new Section[]
             {
                 new Section { SectionName = "Детектив"},
@@ -55,6 +61,9 @@ namespace ContosoUniversity.Data
             }
             context.SaveChanges();
 
+
+
+
             var publishersDt = new Publisher[]
           {
                 new Publisher { PublishingCity = "Рефтинский", PublisherName = "Нью Эра"},
@@ -66,6 +75,32 @@ namespace ContosoUniversity.Data
                 context.Publishers.Add(p);
             }
             context.SaveChanges();
+
+
+
+            var authorsDt = new Author[]
+        {
+                new Author {Surname = "Романович",Name = "Гавриил", MiddleName = "Державин"},
+                new Author {Surname = "Иванович",Name = "Денис", MiddleName = "Фонвизин"},
+                new Author {Surname = "Николаевич",Name = "Александр", MiddleName = "Радищев"},
+                new Author {Surname = "Андреевич",Name = "Иван", MiddleName = "Крылов"}
+        };
+
+            foreach (Author a in authorsDt)
+            {
+                context.Authors.Add(a);
+            }
+            context.SaveChanges();
+
+
+
+
+
+
+
+
+
+
 
 
             var instructors = new Instructor[]

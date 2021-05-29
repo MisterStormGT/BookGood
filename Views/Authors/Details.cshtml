@@ -1,0 +1,68 @@
+﻿@model ContosoUniversity.Models.Author
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+
+<style>
+    .color {
+        font-size: 17px;
+    }
+
+        .color:hover {
+            transition: 0.2s all linear;
+            border-bottom: 3px solid black;
+            padding: 10px;
+            color: black;
+        }
+
+    a.color {
+        transition: 0.2s all linear;
+        border-bottom: 3px solid rgb(54 174 119);
+        text-decoration: none;
+        color: rgb(54 174 119);
+        border-radius: 30px;
+        padding: 5px;
+        text-decoration: none;
+    }
+</style>
+
+<h2 style="
+        text-align: center;
+        border: 3px solid rgb(54 174 119);
+        border-radius: 30px;
+        padding:10px;
+        background:rgb(209 196 196);
+        font-size:30px;">
+    Информация - Авторы
+</h2>
+
+<div>
+    <h4>Авторы</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Surname)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Surname)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.MiddleName)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.MiddleName)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a class="color" asp-action="Edit" asp-route-id="@Model.AuthorID">Изменить</a> |
+    <a class="color" asp-action="Index">Вернуться к полному списку</a>
+</div>

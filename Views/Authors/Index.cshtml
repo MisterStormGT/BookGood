@@ -1,0 +1,179 @@
+﻿@model PaginatedList<ContosoUniversity.Models.Author>
+
+@{
+    ViewData["Title"] = "Author";
+}
+
+<style>
+    p.buttonBlock a {
+        color: white;
+    }
+
+        p.buttonBlock a:hover {
+            color: aliceblue;
+            transition: 0.2s all linear;
+            background: rgb(54 174 119);
+            color: white;
+        }
+
+    .color p {
+        font-size: 17px;
+    }
+
+    .color a:hover {
+        transition: 0.2s all linear;
+        border-bottom: 3px solid black;
+        padding: 10px;
+        color: black;
+    }
+
+    .color a {
+        transition: 0.2s all linear;
+        border-bottom: 3px solid rgb(54 174 119);
+        text-decoration: none;
+        color: rgb(54 174 119);
+        border-radius: 30px;
+        padding: 5px;
+    }
+
+    a.edit:hover {
+        color: aliceblue;
+        transition: 0.2s all linear;
+        background: rgb(54 174 119);
+        color: white;
+    }
+
+    a.details:hover {
+        color: aliceblue;
+        transition: 0.2s all linear;
+        background: rgb(54 174 119);
+        color: white;
+    }
+
+    a.delete:hover {
+        color: aliceblue;
+        transition: 0.2s all linear;
+        background: rgb(54 174 119);
+        color: white;
+    }
+
+    a.edit {
+        padding: 10px;
+        text-decoration: none;
+        background-color: black;
+        color: white;
+        margin-left: 10px;
+        transition: 0.2s all linear;
+    }
+
+    a.details {
+        padding: 10px;
+        text-decoration: none;
+        background-color: black;
+        color: white;
+        margin-left: 10px;
+        transition: 0.2s all linear;
+    }
+
+    a.delete {
+        padding: 10px;
+        text-decoration: none;
+        background-color: black;
+        color: white;
+        margin: 10px;
+        transition: 0.2s all linear;
+    }
+
+    .td {
+        margin: 20px;
+    }
+</style>
+
+<h2 style="
+        text-align: center;
+        border: 3px solid rgb(54 174 119);
+        border-radius: 30px;
+        padding:10px;
+        background:rgb(209 196 196);
+        font-size:30px;">
+    Авторы
+</h2>
+
+<p class="buttonBlock" style="        background: black;
+        transition: 0.4s all linear;
+        width: 20%;
+        border-radius: 30px;
+        cursor: pointer;">
+    <a style="        transition: 0.2s all linear;
+        border-radius: 30px;
+        padding: 10px;
+        font-size: 18px;
+        display: flex;
+        justify-content: center;
+        text-align: center;
+        text-decoration: none;" asp-action="Create" class="activation">Создать Автора</a>
+</p>
+<form asp-action="Index" method="get">
+    <div class="form-action no-color color">
+        <p>
+            Найти по названию Автора:<input type="text" style="border-radius:10px; outline:none; align-items:center;" name="searchString" value="@ViewData["CurrentFilter"]" />
+            <input type="submit" value="Найти" style="border-radius:10px; font-size:16px;" class="btn btn-success" />
+            <a asp-action="Index">Вернуться к полному списку</a>
+        </p>
+    </div>
+</form>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                <a asp-action="Index" asp-route-sortOrder="@ViewData["SurnameSortParam"]" asp-route-currentFilter="@ViewData["CurrentFilter"]">Фамилия</a>
+            </th>
+            <th>
+                <a asp-action="Index" asp-route-sortOrder="@ViewData["NameSortParam"]" asp-route-currentFilter="@ViewData["CurrentFilter"]">Имя</a>
+            </th>
+            <th>
+                <a asp-action="Index" asp-route-sortOrder="@ViewData["MiddleNameSortParam"]" asp-route-currentFilter="@ViewData["CurrentFilter"]">Отчество</a>
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Surname)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.MiddleName)
+                </td>
+                <td>
+                    <a class="edit" asp-action="Edit" asp-route-id="@item.AuthorID">Изменить</a>
+                    <a class="details" asp-action="Details" asp-route-id="@item.AuthorID">Детали</a>
+                    <a class="delete" asp-action="Delete" asp-route-id="@item.AuthorID">Удалить</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+@{ var prevDisabled = !Model.HasPreviousPage ? "disabled" : "";
+    var nextDisabled = !Model.HasNextPage ? "disabled" : ""; }
+
+<a asp-action="Index"
+   asp-route-sortOrder="@ViewData["CurrentSort"]"
+   asp-route-pageNumber="@(Model.PageIndex-1)"
+   asp-route-currentFilter="@ViewData["CurrentFilter"]"
+   class="btn btn-default @prevDisabled">
+    Предыдущая страница
+</a>
+
+<a asp-action="Index"
+   asp-route-sortOrder="@ViewData["CurrentSort"]"
+   asp-route-pageNumber="@(Model.PageIndex+1)"
+   asp-route-currentFilter="@ViewData["CurrentFilter"]"
+   class="btn btn-default @nextDisabled">
+    Следующая страница
+</a>

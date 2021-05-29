@@ -1,0 +1,75 @@
+﻿@model ContosoUniversity.Models.Author
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<style>
+    .color {
+        font-size: 17px;
+    }
+
+        .color:hover {
+            transition: 0.2s all linear;
+            border-bottom: 3px solid black;
+            padding: 10px;
+            color: black;
+        }
+
+    a.color {
+        transition: 0.2s all linear;
+        border-bottom: 3px solid rgb(54 174 119);
+        text-decoration: none;
+        color: rgb(54 174 119);
+        border-radius: 30px;
+        padding: 5px;
+        text-decoration: none;
+    }
+</style>
+
+
+<h2 style="
+        text-align: center;
+        border: 3px solid rgb(54 174 119);
+        border-radius: 30px;
+        padding:10px;
+        background:rgb(209 196 196);
+        font-size:30px;">
+    Создание - Авторы
+</h2>
+
+<h4>Авторы</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Surname" class="control-label"></label>
+                <input asp-for="Surname" class="form-control" />
+                <span asp-validation-for="Surname" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Name" class="control-label"></label>
+                <input asp-for="Name" class="form-control" />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="MiddleName" class="control-label"></label>
+                <input asp-for="MiddleName" class="form-control" />
+                <span asp-validation-for="MiddleName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Создать" class="btn btn-default" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a class="color" asp-action="Index">Вернуться к полному списку</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
