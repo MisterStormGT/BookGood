@@ -17,6 +17,7 @@ namespace ContosoUniversity.Data
         public DbSet<Section> Sections { get; set; }
         public DbSet<Publisher> Publishers { get; set; }
         public DbSet<Author> Authors { get; set; }
+        public DbSet<Book> Books { get; set; }
         public DbSet <Department> Departments { get; set; }
         public DbSet <Instructor> Instructors { get; set; }
         public DbSet<OfficeAssignment> OfficeAssignments{ get; set; }
@@ -30,6 +31,7 @@ namespace ContosoUniversity.Data
             modelBuilder.Entity<Section>().ToTable("Sec");
             modelBuilder.Entity<Publisher>().ToTable("Pub");
             modelBuilder.Entity<Author>().ToTable("Authore");
+            modelBuilder.Entity<Book>().ToTable("Booked");
             modelBuilder.Entity<Department>().ToTable("Departamentos");
             modelBuilder.Entity<Instructor>().ToTable("Instructores");
             modelBuilder.Entity<OfficeAssignment>().ToTable("AsignacionesDeOficina");

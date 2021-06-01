@@ -19,6 +19,56 @@ namespace ContosoUniversity.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+            modelBuilder.Entity("ContosoUniversity.Models.Author", b =>
+                {
+                    b.Property<int>("AuthorID")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("MiddleName")
+                        .HasMaxLength(100);
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasMaxLength(100);
+
+                    b.Property<string>("Surname")
+                        .HasMaxLength(100);
+
+                    b.HasKey("AuthorID");
+
+                    b.ToTable("Authore");
+                });
+
+            modelBuilder.Entity("ContosoUniversity.Models.Book", b =>
+                {
+                    b.Property<int>("BookID")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int>("AuthorID");
+
+                    b.Property<string>("BookName")
+                        .IsRequired()
+                        .HasMaxLength(100);
+
+                    b.Property<int>("PublisherID");
+
+                    b.Property<int>("SectionID");
+
+                    b.Property<DateTime>("YearOfPublishing");
+
+                    b.HasKey("BookID");
+
+                    b.HasIndex("AuthorID");
+
+                    b.HasIndex("PublisherID");
+
+                    b.HasIndex("SectionID");
+
+                    b.ToTable("Booked");
+                });
+
             modelBuilder.Entity("ContosoUniversity.Models.Course", b =>
                 {
                     b.Property<int>("CourseId")
@@ -149,7 +199,7 @@ namespace ContosoUniversity.Migrations
 
                     b.HasKey("PublisherID");
 
-                    b.ToTable("Publishers");
+                    b.ToTable("Pub");
                 });
 
             modelBuilder.Entity("ContosoUniversity.Models.Section", b =>
@@ -164,7 +214,7 @@ namespace ContosoUniversity.Migrations
 
                     b.HasKey("SectionID");
 
-                    b.ToTable("Pub");
+                    b.ToTable("Sec");
                 });
 
             modelBuilder.Entity("ContosoUniversity.Models.Student", b =>
@@ -186,6 +236,24 @@ namespace ContosoUniversity.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Estudiantes");
+                });
+
+            modelBuilder.Entity("ContosoUniversity.Models.Book", b =>
+                {
+                    b.HasOne("ContosoUniversity.Models.Author", "Author")
+                        .WithMany()
+                        .HasForeignKey("AuthorID")
+                        .OnDelete(DeleteBehavior.Cascade);
+
+                    b.HasOne("ContosoUniversity.Models.Publisher", "Publisher")
+                        .WithMany()
+                        .HasForeignKey("PublisherID")
+                        .OnDelete(DeleteBehavior.Cascade);
+
+                    b.HasOne("ContosoUniversity.Models.Section", "Section")
+                        .WithMany()
+                        .HasForeignKey("SectionID")
+                        .OnDelete(DeleteBehavior.Cascade);
                 });
 
             modelBuilder.Entity("ContosoUniversity.Models.Course", b =>

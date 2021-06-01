@@ -1,0 +1,79 @@
+﻿@model ContosoUniversity.Models.Book
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<style>
+    .color {
+        font-size: 17px;
+    }
+
+        .color:hover {
+            transition: 0.2s all linear;
+            border-bottom: 3px solid black;
+            padding: 10px;
+            color: black;
+        }
+
+    a.color {
+        transition: 0.2s all linear;
+        border-bottom: 3px solid rgb(54 174 119);
+        text-decoration: none;
+        color: rgb(54 174 119);
+        border-radius: 30px;
+        padding: 5px;
+        text-decoration: none;
+    }
+</style>
+
+<h2 style="
+        text-align: center;
+        border: 3px solid rgb(54 174 119);
+        border-radius: 30px;
+        padding:10px;
+        background:rgb(209 196 196);
+        font-size:30px;">
+    Информация - Книги
+</h2>
+
+<div>
+    <h4>Книги</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Author)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Author.Name)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Section)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Section.SectionName)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Publisher)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Publisher.PublisherName)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.BookName)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.BookName)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.YearOfPublishing)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.YearOfPublishing)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a class="color" asp-action="Edit" asp-route-id="@Model.BookID">Изменить</a> |
+    <a class="color" asp-action="Index">Вернуться к полному списку</a>
+</div>

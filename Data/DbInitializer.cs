@@ -95,10 +95,17 @@ namespace ContosoUniversity.Data
 
 
 
+            var booksDt = new Book[]
+    {
+                new Book {SectionID = sectionsing.Single(ss => ss.SectionName == "Детектив").SectionID,AuthorID = authorsDt.Single(a => a.MiddleName == "Фонвизин").AuthorID,BookName = "Проспект",PublisherID = publishersDt.Single(p => p.PublisherName == "Регледи").PublisherID,YearOfPublishing = DateTime.Parse("01-02-2000")},
 
+    };
 
-
-
+            foreach (Book b in booksDt)
+            {
+                context.Books.Add(b);
+            }
+            context.SaveChanges();
 
 
 

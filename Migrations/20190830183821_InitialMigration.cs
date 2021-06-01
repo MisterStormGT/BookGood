@@ -149,18 +149,18 @@ namespace ContosoUniversity.Migrations
                         onDelete: ReferentialAction.Cascade);
                 });
 
-                migrationBuilder.CreateTable(
-                name: "Sec",
-                columns: table => new
-                {
-                    SectionID = table.Column<int>(nullable: false)
-                 .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    SectionName = table.Column<string>(maxLength: 100, nullable: true),
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Sec", x => x.SectionID);
-                });
+            migrationBuilder.CreateTable(
+            name: "Sec",
+            columns: table => new
+            {
+                SectionID = table.Column<int>(nullable: false)
+             .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                SectionName = table.Column<string>(maxLength: 100, nullable: true),
+            },
+            constraints: table =>
+            {
+                table.PrimaryKey("PK_Sec", x => x.SectionID);
+            });
 
             migrationBuilder.CreateTable(
                 name: "Pub",
@@ -191,6 +191,40 @@ namespace ContosoUniversity.Migrations
                table.PrimaryKey("PK_Authore", x => x.AuthorID);
            });
 
+            migrationBuilder.CreateTable(
+                name: "Booked",
+                columns: table => new
+                {
+                    BookID = table.Column<int>(nullable: false)
+            .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    AuthorID = table.Column<int>(nullable: false),
+                    SectionID = table.Column<int>(nullable: false),
+                    PublisherID = table.Column<int>(nullable: false),
+                    BookName = table.Column<string>(maxLength: 100, nullable: true),
+                    YearOfPublishing = table.Column<DateTime>(maxLength: 100, nullable: true),
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Booked", x => x.BookID);
+                    table.ForeignKey(
+                        name: "FK_Booked_Author_AuthorID",
+                        column: x => x.AuthorID,
+                        principalTable: "Authore",
+                        principalColumn: "AuthorID",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_Booked_Section_SectionID",
+                        column: x => x.SectionID,
+                        principalTable: "Sec",
+                        principalColumn: "SectionID",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_Booked_Publicher_PublisherID",
+                        column: x => x.PublisherID,
+                        principalTable: "Pub",
+                        principalColumn: "PublisherID",
+                        onDelete: ReferentialAction.Cascade);
+                });
 
 
             migrationBuilder.CreateIndex(
@@ -217,9 +251,26 @@ namespace ContosoUniversity.Migrations
                 name: "IX_Inscriptiones_StudentId",
                 table: "Inscriptiones",
                 column: "StudentId");
+
+            migrationBuilder.CreateIndex(
+               name: "IX_Booked_AuthorID",
+               table: "Booked",
+               column: "AuthorID");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Booked_SectionID",
+                table: "Booked",
+               column: "SectionID");
+
+            migrationBuilder.CreateIndex(
+               name: "IX_Booked_PublisherID",
+               table: "Booked",
+               column: "PublisherID");
+
         }
 
-        protected override void Down(MigrationBuilder migrationBuilder)
+
+protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
                 name: "AsignacionesDeCurso");
@@ -250,6 +301,9 @@ namespace ContosoUniversity.Migrations
 
             migrationBuilder.DropTable(
                name: "Authore");
+
+            migrationBuilder.DropTable(
+               name: "Booked");
         }
     }
 }
