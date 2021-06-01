@@ -155,7 +155,7 @@ namespace ContosoUniversity.Migrations
             {
                 SectionID = table.Column<int>(nullable: false)
              .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                SectionName = table.Column<string>(maxLength: 100, nullable: true),
+                SectionName = table.Column<string>(maxLength: 100, nullable: false),
             },
             constraints: table =>
             {
@@ -169,7 +169,7 @@ namespace ContosoUniversity.Migrations
                     PublisherID = table.Column<int>(nullable: false)
                  .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
                     PublishingCity = table.Column<string>(maxLength: 100, nullable: true),
-                    PublisherName = table.Column<string>(maxLength: 100, nullable: true),
+                    PublisherName = table.Column<string>(maxLength: 100, nullable: false),
                 },
                 constraints: table =>
                 {
@@ -182,8 +182,8 @@ namespace ContosoUniversity.Migrations
            {
                AuthorID = table.Column<int>(nullable: false)
             .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-               Surname = table.Column<string>(maxLength: 100, nullable: true),
-               Name = table.Column<string>(maxLength: 100, nullable: true),
+               Surname = table.Column<string>(maxLength: 100, nullable: false),
+               Name = table.Column<string>(maxLength: 100, nullable: false),
                MiddleName = table.Column<string>(maxLength: 100, nullable: true),
            },
            constraints: table =>
@@ -198,9 +198,9 @@ namespace ContosoUniversity.Migrations
                     BookID = table.Column<int>(nullable: false)
             .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
                     AuthorID = table.Column<int>(nullable: false),
-                    SectionID = table.Column<int>(nullable: false),
-                    PublisherID = table.Column<int>(nullable: false),
-                    BookName = table.Column<string>(maxLength: 100, nullable: true),
+                    SectionID = table.Column<int>(nullable: true),
+                    PublisherID = table.Column<int>(nullable: true),
+                    BookName = table.Column<string>(maxLength: 100, nullable: false),
                     YearOfPublishing = table.Column<DateTime>(maxLength: 100, nullable: true),
                 },
                 constraints: table =>

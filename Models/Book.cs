@@ -19,6 +19,7 @@ namespace ContosoUniversity.Models
         [Display(Name = "Издательство")]
         public int? PublisherID { get; set; }
 
+        [Required(ErrorMessage = "Вы не ввели название книги!")]
         [Display(Name = "Наименование книги")]
         public string BookName { get; set; }
 

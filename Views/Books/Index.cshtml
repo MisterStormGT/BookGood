@@ -155,13 +155,16 @@
                 @Html.DisplayFor(modelItem => item.Section.SectionName)
             </td>
             <td>
+                @Html.DisplayFor(modelItem => item.Author.Name)
+                @Html.DisplayFor(modelItem => item.Author.Surname)
                 @Html.DisplayFor(modelItem => item.Author.MiddleName)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.BookName)
+                "@Html.DisplayFor(modelItem => item.BookName)"
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Publisher.PublisherName)
+                @Html.DisplayFor(modelItem => item.Publisher.PublishingCity)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.YearOfPublishing)
