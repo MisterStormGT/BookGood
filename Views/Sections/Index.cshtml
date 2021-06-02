@@ -6,8 +6,15 @@
 
 <style>
     p.buttonBlock a {
-        color:white;
+        color: white;
+        background: black;
+        transition: 0.4s all linear;
+        width: 20%;
+        border-radius: 30px;
+        cursor: pointer;
+        text-decoration: none;
     }
+
         p.buttonBlock a:hover {
             color: aliceblue;
             transition: 0.2s all linear;
@@ -32,82 +39,80 @@
         text-decoration: none;
         color: rgb(54 174 119);
         border-radius: 30px;
-        padding:5px;
+        padding: 5px;
     }
 
-    a.edit:hover {
+    a.blackBlock:hover {
         color: aliceblue;
         transition: 0.2s all linear;
         background: rgb(54 174 119);
         color: white;
     }
 
-    a.details:hover {
-        color: aliceblue;
-        transition: 0.2s all linear;
-        background: rgb(54 174 119);
-        color: white;
-    }
 
-    a.delete:hover {
-        color: aliceblue;
-        transition: 0.2s all linear;
-        background: rgb(54 174 119);
-        color: white;
-    }
-
-    a.edit {
+    a.blackBlock {
         padding: 10px;
         text-decoration: none;
         background-color: black;
         color: white;
-        margin-left: 10px;
-        transition: 0.2s all linear;
-    }
-    a.details {
-        padding: 10px;
-        text-decoration: none;
-        background-color: black;
-        color: white;
-        margin-left: 10px;
-        transition: 0.2s all linear;
-    }
-    a.delete {
-        padding: 10px;
-        text-decoration: none;
-        background-color: black;
-        color: white;
-        margin: 10px;
         transition: 0.2s all linear;
     }
 
-    .td {
-        margin:20px;
-    }
-</style>
-
-<h2 style="        
+    th {
         text-align: center;
-        border: 3px solid rgb(54 174 119);
-        border-radius: 30px;
-        padding:10px;
-        background:rgb(209 196 196);
-        font-size:30px;">Разделы
-    </h2>
+        background: black;
+        color: white;
+        transition: 0.2s all linear;
+    }
 
-<p class="buttonBlock" style="        background: black;
-        transition: 0.4s all linear;
-        width: 20%;
-        border-radius: 30px;
-        cursor: pointer;">
-    <a style="        transition: 0.2s all linear;
+    td {
+        text-align: center;
+        background: rgb(54 174 119);
+        color: white;
+        transition: 0.2s all linear;
+    }
+
+    form.blackBlock {
+        padding: 10px;
+        text-decoration: none;
+        background-color: black;
+        color: white;
+        transition: 0.2s all linear;
+        margin-bottom: 5px;
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+    }
+
+    h2 {
+        text-align: center;
+        padding: 20px;
+        font-size: 30px;
+        background: rgb(54 174 119);
+        width: auto;
+        margin-top: 0;
+        margin: 0 auto;
+        margin-bottom: 20px;
+        border-radius: 20px;
+        color: white
+    }
+
+    .NewCreate {
+        transition: 0.2s all linear;
         border-radius: 30px;
         padding: 10px;
         font-size: 18px;
         display: flex;
         justify-content: center;
         text-align: center;
-        text-decoration: none;" asp-action="Create" class="activation">Создать раздел</a>
+        text-decoration: none;
+    }
+</style>
+
+<h2>Разделы</h2>
+
+<p class="buttonBlock">
+    <a asp-action="Create" class="activation NewCreate">Создать раздел</a>
 </p>
 <form asp-action="Index" method="get">
     <div class="form-action no-color color">
@@ -122,24 +127,26 @@
     <thead>
         <tr>
             <th>
-                <a asp-action="Index" asp-route-sortOrder="@ViewData["SectionsSortParam"]" asp-route-currentFilter="@ViewData["CurrentFilter"]">Наименование раздела</a>
+                <a class="blackBlock" asp-action="Index" asp-route-sortOrder="@ViewData["SectionsSortParam"]" asp-route-currentFilter="@ViewData["CurrentFilter"]">Наименование раздела</a>
             </th>
-            <th></th>
+            <th>
+                <a class="blackBlock"> ← Сортировка</a>
+            </th>
         </tr>
     </thead>
     <tbody>
         @foreach (var item in Model)
         {
-            <tr>
-                <td class="td">
-                    @Html.DisplayFor(modelItem => item.SectionName)
-                </td>
-                <td>
-                    <a class="edit" asp-action="Edit" asp-route-id="@item.SectionID">Изменить</a>
-                    <a class="details" asp-action="Details" asp-route-id="@item.SectionID">Детали</a>
-                    <a class="delete" asp-action="Delete" asp-route-id="@item.SectionID">Удалить</a>
-                </td>
-            </tr>
+        <tr style="border-top: 5px solid #ddd">
+            <td class="td">
+                @Html.DisplayFor(modelItem => item.SectionName)
+            </td>
+            <td>
+                <a class="blackBlock" asp-action="Edit" asp-route-id="@item.SectionID">Изменить <img style="width:25px;" src="https://img.icons8.com/dusk/64/000000/change.png" /></a>
+                <a class="blackBlock" asp-action="Details" asp-route-id="@item.SectionID">Детали <img style="width:25px;" src="https://img.icons8.com/dusk/64/000000/details-pane.png" /></a>
+                <a class="blackBlock" asp-action="Delete" asp-route-id="@item.SectionID">Удалить <img style="width:20px;" src="https://img.icons8.com/flat-round/64/000000/delete-sign.png" /></a>
+            </td>
+        </tr>
         }
     </tbody>
 </table>
@@ -150,7 +157,7 @@
    asp-route-sortOrder="@ViewData["CurrentSort"]"
    asp-route-pageNumber="@(Model.PageIndex-1)"
    asp-route-currentFilter="@ViewData["CurrentFilter"]"
-   class="btn btn-default @prevDisabled">
+   class="blackBlock btn btn-default @prevDisabled">
     Предыдущая страница
 </a>
 
@@ -158,6 +165,6 @@
    asp-route-sortOrder="@ViewData["CurrentSort"]"
    asp-route-pageNumber="@(Model.PageIndex+1)"
    asp-route-currentFilter="@ViewData["CurrentFilter"]"
-   class="btn btn-default @nextDisabled">
+   class="blackBlock btn btn-default @nextDisabled">
     Следующая страница
 </a>
