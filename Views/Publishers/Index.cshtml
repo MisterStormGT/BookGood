@@ -56,7 +56,25 @@
         background-color: black;
         color: white;
         transition: 0.2s all linear;
+        align-items: center;
     }
+
+    .blackBlock.btn.text-dark {
+        padding: 3px;
+        text-decoration: none;
+        background-color: black;
+        color: white;
+        transition: 0.2s all linear;
+        align-items: center;
+        margin: 0;
+    }
+
+        .blackBlock.btn.text-dark:hover {
+            color: aliceblue;
+            transition: 0.2s all linear;
+            background: rgb(54 174 119);
+            color: white;
+        }
 
     th {
         text-align: center;
@@ -70,6 +88,7 @@
         background: rgb(54 174 119);
         color: white;
         transition: 0.2s all linear;
+        font-size: 16px;
     }
 
     form.blackBlock {
@@ -94,7 +113,7 @@
         margin: 0 auto;
         margin-bottom: 20px;
         border-radius: 20px;
-        color: white
+        color: white;
     }
 
     .NewCreate {
@@ -147,9 +166,9 @@
                 @Html.DisplayFor(modelItem => item.PublisherName)
             </td>
             <td>
-                <a class="blackBlock" asp-action="Edit" asp-route-id="@item.PublisherID">Изменить <img style="width:25px;" src="https://img.icons8.com/dusk/64/000000/change.png" /></a>
-                <a class="blackBlock" asp-action="Details" asp-route-id="@item.PublisherID">Детали <img style="width:25px;" src="https://img.icons8.com/dusk/64/000000/details-pane.png" /></a>
-                <a class="blackBlock" asp-action="Delete" asp-route-id="@item.PublisherID">Удалить <img style="width:20px;" src="https://img.icons8.com/flat-round/64/000000/delete-sign.png" /></a>
+                <a class="blackBlock btn text-dark" asp-action="Edit" asp-route-id="@item.PublisherID" title="Изменить"><i class="fas fa-exchange-alt"></i></a>
+                <a class="blackBlock btn text-dark" asp-action="Details" asp-route-id="@item.PublisherID" title="Детали"><i class="fas fa-info-circle"></i></a>
+                <a class="blackBlock btn text-dark" asp-action="Delete" asp-route-id="@item.PublisherID" title="Удалить"><i class="fas fa-minus-circle"></i></a>
             </td>
         </tr>
         }

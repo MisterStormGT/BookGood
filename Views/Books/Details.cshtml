@@ -9,36 +9,77 @@
         font-size: 17px;
     }
 
-        .color:hover {
-            transition: 0.2s all linear;
-            border-bottom: 3px solid black;
-            padding: 10px;
-            color: black;
-        }
+    .color:hover {
+        transition: 0.2s all linear;
+        border-bottom: 3px solid black;
+        padding: 10px;
+        color: black;
+        text-decoration:none;
+    }
 
-    a.color {
+    .color{
         transition: 0.2s all linear;
         border-bottom: 3px solid rgb(54 174 119);
         text-decoration: none;
         color: rgb(54 174 119);
         border-radius: 30px;
         padding: 5px;
+    }
+
+    .blackBlock:hover {
+        color: aliceblue;
+        transition: 0.2s all linear;
+        background: rgb(54 174 119);
+        color: white;
+    }
+
+    .blackBlock {
+        padding: 10px;
         text-decoration: none;
+        color: black;
+        transition: 0.2s all linear;
+        margin-bottom: 5px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 30px;
+    }
+
+    h2 {
+        text-align: center;
+        padding: 20px;
+        font-size: 30px;
+        background: rgb(54 174 119);
+        width: auto;
+        margin-top: 0;
+        margin: 0 auto;
+        margin-bottom: 20px;
+        border-radius: 20px;
+        color: white;
+    }
+
+    .btn {
+        text-align: center;
+        padding: 10px;
+        font-size: 15px;
+        background: black;
+        color: white;
+        transition: 0.2s all linear;
+        border: none;
+    }
+
+    .form-group {
+        transition: 0.2s all linear;
+    }
+
+    .row {
+        margin: 0 100px;
     }
 </style>
 
-<h2 style="
-        text-align: center;
-        border: 3px solid rgb(54 174 119);
-        border-radius: 30px;
-        padding:10px;
-        background:rgb(209 196 196);
-        font-size:30px;">
-    Информация - Книги
-</h2>
+<h2>Информация - Книги</h2>
 
 <div>
-    <h4>Книги</h4>
     <hr />
     <dl class="dl-horizontal">
         <dt>
@@ -46,6 +87,8 @@
         </dt>
         <dd>
             @Html.DisplayFor(model => model.Author.Name)
+            @Html.DisplayFor(model => model.Author.Surname)
+            @Html.DisplayFor(model => model.Author.MiddleName)
         </dd>
         <dt>
             @Html.DisplayNameFor(model => model.Section)
@@ -57,7 +100,8 @@
             @Html.DisplayNameFor(model => model.Publisher)
         </dt>
         <dd>
-            @Html.DisplayFor(model => model.Publisher.PublisherName)
+            @Html.DisplayFor(model => model.Publisher.PublisherName) -
+            @Html.DisplayFor(model => model.Publisher.PublishingCity)
         </dd>
         <dt>
             @Html.DisplayNameFor(model => model.BookName)

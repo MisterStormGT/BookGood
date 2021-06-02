@@ -2,6 +2,53 @@
     ViewData["Title"] = "Home Page";
 }
 
+<style>
+
+    .home-products {
+        padding-top: 24px;
+        padding-bottom: 60px;
+    }
+
+        .home-products h3.all_products {
+            margin-bottom: 35px;
+        }
+
+        .home-products .row {
+            flex-direction: column;
+        }
+
+    .products-wrapper {
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+    }
+
+    .product {
+        width: 205px;
+        margin-bottom: 30px;
+        transition: all .2s linear;
+        padding: 10px 10px 10px 10px;
+    }
+
+        .product:hover {
+            border-radius: 5px;
+            transition: 0.5s;
+            box-shadow: 0px 0px 10px 0px #00AC4E;
+            background-color: #f4fff9;
+        }
+
+        .product .title {
+            margin: 9px 0 5px;
+            display: block;
+            font-family: 'TT Norms Pro';
+            font-weight: 500;
+            font-size: 14.4845px;
+            line-height: 22px;
+            color: #000000;
+            text-decoration-color: #00AC4E;
+        }
+</style>
+
 <div style="margin-top:20px;" class="jumbotron">
     <h1 style="        text-align: center;
         border: 4px solid rgb(54 174 119);
@@ -28,5 +75,14 @@
         <p style="font-size:40px;">
             Этот веб-сайт действует как хранилище книг!
         </p>
+    </div>
+</div>
+<div class="home-products row">
+    <div class="products-wrapper">
+        <div class="product">
+            <div class="jumbotron title">
+            </div>
+        </div>
+
     </div>
 </div>

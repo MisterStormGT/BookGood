@@ -112,14 +112,11 @@
         </form>
     </div>
 </div>
-
-<form asp-action="Index" method="get">
     <div class="form-action no-color color">
         <p>
             <a asp-action="Index">Вернуться к полному списку</a>
         </p>
     </div>
-</form>
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
 }

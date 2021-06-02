@@ -109,8 +109,8 @@ namespace ContosoUniversity.Controllers
         // GET: Books/Create
         public IActionResult Create()
         {
-            ViewData["AuthorID"] = new SelectList(_context.Authors, "AuthorID", "Name");
-            ViewData["PublisherID"] = new SelectList(_context.Publishers, "PublisherID", "PublisherName");
+            ViewData["AuthorID"] = new SelectList(_context.Authors, "AuthorID", "MiddleName", "Surname", "Name");
+            ViewData["PublisherID"] = new SelectList(_context.Publishers, "PublisherID", "PublisherName", "PublishingCity", "PublishingCity");
             ViewData["SectionID"] = new SelectList(_context.Sections, "SectionID", "SectionName");
             return View();
         }
@@ -147,8 +147,8 @@ namespace ContosoUniversity.Controllers
             {
                 return NotFound();
             }
-            ViewData["AuthorID"] = new SelectList(_context.Authors, "AuthorID", "Name", book.AuthorID);
-            ViewData["PublisherID"] = new SelectList(_context.Publishers, "PublisherID", "PublisherName", book.PublisherID);
+            ViewData["AuthorID"] = new SelectList(_context.Authors, "AuthorID", "MiddleName", book.AuthorID, "Name");
+            ViewData["PublisherID"] = new SelectList(_context.Publishers, "PublisherID", "PublisherName", book.PublisherID, "PublishingCity");
             ViewData["SectionID"] = new SelectList(_context.Sections, "SectionID", "SectionName", book.SectionID);
             return View(book);
         }

@@ -5,39 +5,81 @@
 }
 
 <style>
-    .color{
+    .color p {
         font-size: 17px;
     }
 
-    .color:hover {
+    .color a:hover {
         transition: 0.2s all linear;
         border-bottom: 3px solid black;
         padding: 10px;
         color: black;
     }
 
-    a.color{
+    .color a {
         transition: 0.2s all linear;
         border-bottom: 3px solid rgb(54 174 119);
         text-decoration: none;
         color: rgb(54 174 119);
         border-radius: 30px;
         padding: 5px;
-        text-decoration:none;
+    }
+
+    .blackBlock:hover {
+        color: aliceblue;
+        transition: 0.2s all linear;
+        background: rgb(54 174 119);
+        color: white;
+    }
+
+    .blackBlock {
+        padding: 10px;
+        text-decoration: none;
+        color: black;
+        transition: 0.2s all linear;
+        margin-bottom: 5px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 30px;
+    }
+
+    h2 {
+        text-align: center;
+        padding: 20px;
+        font-size: 30px;
+        background: rgb(54 174 119);
+        width: auto;
+        margin-top: 0;
+        margin: 0 auto;
+        margin-bottom: 20px;
+        border-radius: 20px;
+        color: white;
+    }
+
+    .btn {
+        text-align: center;
+        padding: 10px;
+        font-size: 15px;
+        background: black;
+        color: white;
+        transition: 0.2s all linear;
+        border: none;
+    }
+
+    .form-group {
+        transition: 0.2s all linear;
+    }
+
+    .row {
+        margin: 0 100px;
     }
 </style>
 
-<h2 style="        
-        text-align: center;
-        border: 3px solid rgb(54 174 119);
-        border-radius: 30px;
-        padding:10px;
-        background:rgb(209 196 196);
-        font-size:30px;">Создание - Разделы</h2>
 
-<h4>Разделы</h4>
+<h2>Создание - Разделы</h2>
 <hr />
-<div class="row">
+<div class="row blackBlock">
     <div class="col-md-4">
         <form asp-action="Create">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
@@ -52,11 +94,11 @@
         </form>
     </div>
 </div>
-
-<div>
-    <a class="color" asp-action="Index">Вернуться к полному списку</a>
+<div class="form-action no-color color">
+    <p>
+        <a asp-action="Index">Вернуться к полному списку</a>
+    </p>
 </div>
-
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
 }

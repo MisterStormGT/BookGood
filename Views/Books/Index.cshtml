@@ -89,6 +89,7 @@
         background: rgb(54 174 119);
         color: white;
         transition: 0.2s all linear;
+        font-size:16px;
     }
 
     form.blackBlock {
@@ -183,7 +184,7 @@
                 "@Html.DisplayFor(modelItem => item.BookName)"
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Publisher.PublisherName)
+                @Html.DisplayFor(modelItem => item.Publisher.PublisherName) -
                 @Html.DisplayFor(modelItem => item.Publisher.PublishingCity)
             </td>
             <td>

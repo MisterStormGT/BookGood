@@ -12,5 +12,7 @@ namespace ContosoUniversity.Models.SchoolViewModels
         public IEnumerable<Enrollment> Enrollments { get; set; }
 
         public IEnumerable<Author> Authors { get; set; }
+
+        public IEnumerable<Book> Books { get; set; }
     }
 }
