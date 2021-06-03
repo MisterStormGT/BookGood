@@ -6,9 +6,6 @@
 
 <h2>Преподаватели</h2>
 
-<p>
-    <a asp-action="Create">Создать нового</a>
-</p>
 <table class="table">
     <thead>
         <tr>
@@ -19,55 +16,51 @@
             <th>Курсы</th>
         </tr>
     </thead>
-        <tbody >
-            @foreach (var item in Model.Instructors)
+    <tbody>
+        @foreach (var item in Model.Instructors)
+        {
+            string selectedRow = "";
+            if (item.ID == (int?)ViewData["InstructorId"])
             {
-                string selectedRow = "";
-                if (item.ID == (int?)ViewData["InstructorId"])                 
-                {
-                    selectedRow = "success";
-                }
-                <tr class="@selectedRow">
-                    <td>
-                        @Html.DisplayFor(modelItem => item.LastName)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.FirstMidName)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.HireDate)
-                    </td>
-                    <td>
-                        @if (item.OfficeAssignment != null)
+                selectedRow = "success";
+            }
+            <tr class="@selectedRow">
+                <td>
+                    @Html.DisplayFor(modelItem => item.LastName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.FirstMidName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.HireDate)
+                </td>
+                <td>
+                    @if (item.OfficeAssignment != null)
+                    {
+                        @item.OfficeAssignment.Location
+                    }
+                </td>
+                <td>
+                    @{
+                        foreach (var course in item.CourseAssignments)
                         {
-                            @item.OfficeAssignment.Location
+                            @course.Course.CourseId @: @course.Course.Title  <br />
                         }
-                    </td>
-                    <td>
-                        @{ 
-                            foreach (var course in item.CourseAssignments)
-                            {
-                                @course.Course.CourseId @: @course.Course.Title  <br/>
-                            }
-                        }
-                    </td>
-                    <td>
-                        <a asp-action="Index" asp-route-id="@item.ID">Выбрать</a> |
-                        <a asp-action="Edit" asp-route-id="@item.ID">Изменить</a> |
-                        <a asp-action="Details" asp-route-id="@item.ID">Детали о преподавателе</a> |
-                        <a asp-action="Delete" asp-route-id="@item.ID">Удалить</a>
-                    </td>
-                </tr>
-             }
+                    }
+                </td>
+                <td>
+                    <a asp-action="Index" asp-route-id="@item.ID">Выбрать</a> |
+                </td>
+            </tr>
+        }
     </tbody>
 </table>
 
 @if (Model.Courses != null)
 {
-<h3>Курсы, проводимые выбранным преподавателем</h3>
+    <h3>Курсы, проводимые выбранным преподавателем</h3>
     <table class="table">
         <tr>
-            <th></th>
             <th>Номер</th>
             <th>Название</th>
             <th>Техникум</th>
@@ -81,7 +74,7 @@
             }
             <tr class="@selectedRow">
                 <td>
-                    @Html.ActionLink("Select", "Index", new {courseId = item.CourseId})
+                    @Html.ActionLink("Select", "Index", new { courseId = item.CourseId })
                 </td>
                 <td>
                     @item.CourseId
@@ -97,27 +90,82 @@
     </table>
 }
 
-@if (Model.Enrollments != null)
-{
-<h3>
 
-    Студенты, обучающиеся на выбранном курсе
-</h3>
+
+
+@*@model ContosoUniversity.Models.SchoolViewModels.InstructorIndexData
+
+    @{
+        ViewData["Title"] = "Instructors";
+    }
+
+    <h2>Разделы</h2>
+
     <table class="table">
-        <tr>
-            <th>Имя</th>
-            <th>Оценка</th>
-        </tr>
-        @foreach (var item in Model.Enrollments)
-        {
+        <thead>
             <tr>
-                <td>
-                    @item.Student.FullName
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Grade)
-                </td>
+                <th>Раздел</th>
             </tr>
-        }
+        </thead>
+        <tbody>
+            @foreach (var item in Model.Sections)
+            {
+                string selectedRow = "";
+                if (item.SectionID == (int?)ViewData["SectionID"])
+                {
+                    selectedRow = "success";
+                }
+                <tr class="@selectedRow">
+                    <td>
+                        @Html.DisplayFor(modelItem => item.SectionName)
+                    </td>
+                    <td>
+                        <a asp-action="Index" asp-route-id="@item.SectionID">Выбрать</a> |
+                </tr>
+            }
+        </tbody>
     </table>
-}
+
+    @if (Model.Books != null)
+    {
+        <h3>Список книг по жанру</h3>
+        <table class="table">
+            <tr>
+                <th>Раздел</th>
+                <th>Автор</th>
+                <th>Название книги</th>
+                <th>Издательство</th>
+            </tr>
+            @foreach (var item in Model.Books)
+            {
+                string selectedRow = "";
+                if (item.BookID == (int?)ViewData["CourseId"])
+                {
+                    selectedRow = "success";
+                }
+                <tr class="@selectedRow">
+                    <td>
+                        @Html.ActionLink("Select", "Index", new { bookid = item.BookID })
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Section.SectionName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Author.Name)
+                        @Html.DisplayFor(modelItem => item.Author.Surname)
+                        @Html.DisplayFor(modelItem => item.Author.MiddleName)
+                    </td>
+                    <td>
+                        "@Html.DisplayFor(modelItem => item.BookName)"
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Publisher.PublisherName) -
+                        @Html.DisplayFor(modelItem => item.Publisher.PublishingCity)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.YearOfPublishing)
+                    </td>
+                </tr>
+            }
+        </table>
+    }*@

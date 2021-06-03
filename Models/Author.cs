@@ -21,6 +21,5 @@ namespace ContosoUniversity.Models
         [StringLength(100, MinimumLength = 1)]
         [Display(Name = "Отчество")]
         public string MiddleName { get; set; }
-
     }
 }
