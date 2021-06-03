@@ -11,33 +11,17 @@ namespace ContosoUniversity.Data
         public SchoolContext(DbContextOptions<SchoolContext> options):base(options)
         {
         }
-        public DbSet <Course> Courses { get; set; }
-        public DbSet <Enrollment> Enrollments { get; set; }
-        public DbSet <Student> Students { get; set; }
         public DbSet<Section> Sections { get; set; }
         public DbSet<Publisher> Publishers { get; set; }
         public DbSet<Author> Authors { get; set; }
         public DbSet<Book> Books { get; set; }
-        public DbSet <Department> Departments { get; set; }
-        public DbSet <Instructor> Instructors { get; set; }
-        public DbSet<OfficeAssignment> OfficeAssignments{ get; set; }
-        public DbSet<CourseAssignment> CourseAssignments { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<Course>().ToTable("Cursos");
-            modelBuilder.Entity<Enrollment>().ToTable("Inscriptiones");
-            modelBuilder.Entity<Student>().ToTable("Estudiantes");
             modelBuilder.Entity<Section>().ToTable("Sec");
             modelBuilder.Entity<Publisher>().ToTable("Pub");
             modelBuilder.Entity<Author>().ToTable("Authore");
             modelBuilder.Entity<Book>().ToTable("Booked");
-            modelBuilder.Entity<Department>().ToTable("Departamentos");
-            modelBuilder.Entity<Instructor>().ToTable("Instructores");
-            modelBuilder.Entity<OfficeAssignment>().ToTable("AsignacionesDeOficina");
-            modelBuilder.Entity<CourseAssignment>().ToTable("AsignacionesDeCurso");
-            modelBuilder.Entity<CourseAssignment>()
-                    .HasKey(c => new { c.CourseId, c.InstructorId });
 
         }
 

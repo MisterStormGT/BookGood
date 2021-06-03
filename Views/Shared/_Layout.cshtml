@@ -35,11 +35,11 @@
                         margin: 5px;
                     }
 
-                    .nav.navbar-nav li:hover {
-                        transition: 0.3s all linear;
-                        font-size: 20px;
-                        background:rgb(54 174 119);
-                    }
+                        .nav.navbar-nav li:hover {
+                            transition: 0.3s all linear;
+                            font-size: 20px;
+                            background: rgb(54 174 119);
+                        }
 
                     a.navbar-brand {
                         transition: 0.3s all linear;
@@ -48,15 +48,16 @@
                         margin: 5px;
                     }
 
-                    a.navbar-brand:hover {
-                        transition: 0.3s all linear;
-                        font-size: 20px;
-                        background: rgb(54 174 119);
-                    }
+                        a.navbar-brand:hover {
+                            transition: 0.3s all linear;
+                            font-size: 20px;
+                            background: rgb(54 174 119);
+                        }
                 </style>
-
+                <a asp-area="" asp-controller="Home" asp-action="Index" class="navbar-brand"><img style="width:100px; border-radius:30px; margin-top:-15px; padding:0;" src="~/wp6043472.jpg" alt="Лого" /></a>
                 <a asp-area="" asp-controller="Home" asp-action="Index" class="navbar-brand">BookGood</a>
             </div>
+            
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
                     <li><a asp-area="" asp-controller="Sections" asp-action="Index">Разделы</a></li>
@@ -73,15 +74,17 @@
     <div class="container body-content">
         @RenderBody()
         <hr />
-        <footer style="
-    width:20%;
+        <footer style=" display:flex;
+ justify-content:space-between;
+    width:26%;
         bottom: 0;
         background-color: rgb(54 174 119);
         padding: 20px;
         font-size: 20px;
         margin: 0;
         border-radius: 40px;">
-            <p style="margin-bottom: 0; color:white;">&copy; 2021 - BookGood</p>
+            <p style="margin-bottom: 0; color:white;">&copy; 2021 - BookGood</p> -
+            <a href="" style="margin-bottom: 0; color:white;">О НАС</a>
         </footer>
     </div>
 

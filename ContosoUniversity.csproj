@@ -5,6 +5,21 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Views\Новая папка1\**" />
+    <Compile Remove="Views\Новая папка\**" />
+    <Compile Remove="Новая папка\**" />
+    <Content Remove="Views\Новая папка1\**" />
+    <Content Remove="Views\Новая папка\**" />
+    <Content Remove="Новая папка\**" />
+    <EmbeddedResource Remove="Views\Новая папка1\**" />
+    <EmbeddedResource Remove="Views\Новая папка\**" />
+    <EmbeddedResource Remove="Новая папка\**" />
+    <None Remove="Views\Новая папка1\**" />
+    <None Remove="Views\Новая папка\**" />
+    <None Remove="Новая папка\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Compile Remove="Migrations\20210529133717_NoAll.cs" />
     <Compile Remove="Migrations\20210529133717_NoAll.Designer.cs" />
   </ItemGroup>
