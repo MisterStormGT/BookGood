@@ -26,7 +26,7 @@ namespace ContosoUniversity.Models
         [DataType(DataType.Date)]
         [DisplayFormat(DataFormatString = "{0:yyyy-dd-MM}", ApplyFormatInEditMode = true)]
         [Display(Name = "Год издания")]
-        public DateTime YearOfPublishing { get; set; }
+        public DateTime? YearOfPublishing { get; set; }
 
         [Display(Name = "Автор")]
         public Author Author { get; set; }

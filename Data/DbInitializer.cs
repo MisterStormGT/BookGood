@@ -45,10 +45,10 @@ namespace ContosoUniversity.Data
 
             var authorsDt = new Author[]
         {
-                new Author {Surname = "Романович",Name = "Гавриил", MiddleName = "Державин"},
-                new Author {Surname = "Иванович",Name = "Денис", MiddleName = "Фонвизин"},
-                new Author {Surname = "Николаевич",Name = "Александр", MiddleName = "Радищев"},
-                new Author {Surname = "Андреевич",Name = "Иван", MiddleName = "Крылов"}
+                new Author {Surname = "Державин",Name = "Гавриил", MiddleName = "Романович"},
+                new Author {Surname = "Фонвизин",Name = "Денис", MiddleName = "Иванович"},
+                new Author {Surname = "Радищев",Name = "Александр", MiddleName = "Николаевич"},
+                new Author {Surname = "Крылов",Name = "Иван", MiddleName = "Андреевич"}
         };
 
             foreach (Author a in authorsDt)
@@ -59,7 +59,7 @@ namespace ContosoUniversity.Data
 
             var booksDt = new Book[]
     {
-                new Book {SectionID = sectionsing.Single(ss => ss.SectionName == "Детектив").SectionID,AuthorID = authorsDt.Single(a => a.MiddleName == "Фонвизин").AuthorID,BookName = "Проспект",PublisherID = publishersDt.Single(p => p.PublisherName == "Регледи").PublisherID,YearOfPublishing = DateTime.Parse("01-02-2000")},
+                new Book {SectionID = sectionsing.Single(ss => ss.SectionName == "Детектив").SectionID,AuthorID = authorsDt.Single(a => a.Surname == "Фонвизин").AuthorID,BookName = "Проспект",PublisherID = publishersDt.Single(p => p.PublisherName == "Регледи").PublisherID,YearOfPublishing = DateTime.Parse("01-02-2000")},
 
     };
             foreach (Book b in booksDt)

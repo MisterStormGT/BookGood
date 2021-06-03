@@ -109,7 +109,7 @@ namespace ContosoUniversity.Controllers
         // GET: Books/Create
         public IActionResult Create()
         {
-            ViewData["AuthorID"] = new SelectList(_context.Authors, "AuthorID", "MiddleName", "Surname", "Name");
+            ViewData["AuthorID"] = new SelectList(_context.Authors, "AuthorID", "Surname", "Name", "Name");
             ViewData["PublisherID"] = new SelectList(_context.Publishers, "PublisherID", "PublisherName", "PublishingCity", "PublishingCity");
             ViewData["SectionID"] = new SelectList(_context.Sections, "SectionID", "SectionName");
             return View();
