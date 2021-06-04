@@ -12,6 +12,7 @@ namespace ContosoUniversity.Models
         [Required]
         [Display(Name = "Наименование")]
         [StringLength(100, MinimumLength = 1)]
+        [RegularExpression(@"(([A-zА-яёЁ])+(\s?)([A-zА-яёЁ])*(\s?))*", ErrorMessage = "Введите Наименование правильно, цифры запрещены")]
         public string SectionName { get; set; }
 
     }

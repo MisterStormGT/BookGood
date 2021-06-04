@@ -21,6 +21,7 @@ namespace ContosoUniversity.Models
 
         [Required(ErrorMessage = "Вы не ввели название книги!")]
         [Display(Name = "Наименование книги")]
+        [RegularExpression(@"(([A-Za-zА-яёЁ])+(\s?)([А-яёЁ])*(\s?))*", ErrorMessage = "Введите Наименование правильно, цифры запрещены")]
         public string BookName { get; set; }
 
         [DataType(DataType.Date)]

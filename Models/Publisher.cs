@@ -12,11 +12,13 @@ namespace ContosoUniversity.Models
 
         [Display(Name = "Город издательства")]
         [StringLength(100, MinimumLength = 1)]
+        [RegularExpression(@"(([A-Za-zА-яёЁ])+(\s?)([А-яёЁ])*(\s?))*", ErrorMessage = "Введите Наименование правильно, цифры запрещены")]
         public string PublishingCity { get; set; }
 
         [Required]
         [Display(Name = "Наименование издательства")]
         [StringLength(100, MinimumLength = 1)]
+        [RegularExpression(@"(([A-Za-zА-яёЁ])+(\s?)([А-яёЁ])*(\s?))*", ErrorMessage = "Введите Наименование правильно, цифры запрещены")]
         public string PublisherName { get; set; }
 
     }
